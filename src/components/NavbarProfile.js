@@ -15,6 +15,7 @@ export const NavbarProfile = ({username, userid, profilePic}) => {
             <br/>
             <span className='nav-bar-profile-text'>Id: {userid}</span>
             <br/>
+            <br/>
             {/*UserName*/}
             <span className='nav-bar-profile-text'>Username: {username}</span>
         </>

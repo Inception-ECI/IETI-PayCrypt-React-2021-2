@@ -9,8 +9,9 @@ function App() {
         <Router>
             <Switch>
                 {/* Esto debe cambiar cuando se agreguen las otras funcionalidades*/}
-                <Route path='/' component={Navbar} />
-                <Router path='/home' component={Navbar}/>
+                <Route path='/home' component={Navbar}/>
+                {/* Aca va el index*/}
+                <Route path='/' />
             </Switch>
         </Router>
     </>

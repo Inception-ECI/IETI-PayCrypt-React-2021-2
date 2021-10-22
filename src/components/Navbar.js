@@ -9,20 +9,25 @@ import { NavbarProfile } from "./NavbarProfile";
 
 function Navbar() {
 
-    const [sidebar, setSidebar] = useState(true);
+    const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
 
     const SidebarData = [
         {
+            title: 'Home',
+            path: '/home',
+            icon: <MdIcons.MdHome/>,
+            cName: 'nav-text'
+        },{
             title: 'Transaction Report',
             path: '/transactions',
             icon: <MdIcons.MdAssignment/>,
             cName: 'nav-text'
         },
         {
-            title: 'Affiliated Accounts',
-            path: '/accounts',
+            title: 'Wallets',
+            path: '/wallets',
             icon: <MdIcons.MdAccountBalance/>,
             cName: 'nav-text'
         },
