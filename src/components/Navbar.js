@@ -65,12 +65,6 @@ function Navbar() {
         },
     ];
 
-    const dropdownIdiomMenuProps = {
-        menuStyle: {
-            color: "white"
-        },
-    }
-
     return (
         <>
             <IconContext.Provider value={{color: '#ffffff'}}>
