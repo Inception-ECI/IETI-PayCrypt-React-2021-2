@@ -6,6 +6,9 @@ import * as MdIcons from "react-icons/md";
 import './Navbar.css';
 import {IconContext} from "react-icons";
 import { NavbarProfile } from "./NavbarProfile";
+import ReactSearchBox from "react-search-box";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 function Navbar() {
 
@@ -39,6 +42,35 @@ function Navbar() {
         }
     ];
 
+    const data = [
+        {
+            key: "home",
+            value: "Home",
+        },
+        {
+            key: "Trans",
+            value: "Transaction Report",
+        },
+        {
+            key: "Wall",
+            value: "Wallets",
+        },
+        {
+            key: "Gen",
+            value: "Generate Link",
+        },
+        {
+            key: "Supp",
+            value: "Support",
+        },
+    ];
+
+    const dropdownIdiomMenuProps = {
+        menuStyle: {
+            color: "white"
+        },
+    }
+
     return (
         <>
             <IconContext.Provider value={{color: '#ffffff'}}>
@@ -46,6 +78,30 @@ function Navbar() {
                     <Link to='#' className='menu-bars'>
                         <FaIcons.FaBars onClick={showSidebar}/>
                     </Link>
+                    <div className='nav-search-box'>
+                        <ReactSearchBox
+                            placeholder="Search resources..."
+                            value="Doe"
+                            data={data}
+                        />
+                    </div>
+                    <div className='nav-idiom-changer'>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            defaultValue={10}
+                            label="Age" sx={{
+                                color: "black",
+                                bgcolor: 'white',
+                                boxShadow: 90,
+                                borderRadius: 90,
+                                height: 40,
+                            }}>
+                            <MenuItem value={10}>ENG</MenuItem>
+                            <MenuItem value={20}>ESP</MenuItem>
+                            <MenuItem value={30}>POR</MenuItem>
+                        </Select>
+                    </div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' onClick={showSidebar}>

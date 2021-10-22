@@ -76,6 +76,14 @@
     color: white;
 }
 
+.nav-search-box {
+    margin-left: 40%;
+}
+
+.nav-idiom-changer {
+    margin-left: 38%;
+}
+
 hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
