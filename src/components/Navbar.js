@@ -30,8 +30,8 @@ function Navbar() {
             cName: 'nav-text'
         },
         {
-            title: 'Wallets',
-            path: '/wallets',
+            title: 'Affiliated Accounts',
+            path: '/accounts',
             icon: <MdIcons.MdAccountBalance/>,
             cName: 'nav-text'
         },
@@ -53,8 +53,8 @@ function Navbar() {
             value: "Transaction Report",
         },
         {
-            key: "Wall",
-            value: "Wallets",
+            key: "Affi",
+            value: "Affiliated Accounts",
         },
         {
             key: "Gen",
