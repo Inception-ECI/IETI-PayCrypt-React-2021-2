@@ -9,6 +9,7 @@ import { NavbarProfile } from "./NavbarProfile";
 import ReactSearchBox from "react-search-box";
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
 
 function Navbar() {
 
@@ -95,6 +96,9 @@ function Navbar() {
                             <MenuItem value={20}>ESP</MenuItem>
                             <MenuItem value={30}>POR</MenuItem>
                         </Select>
+                        <Button variant="contained" href="/logout" sx={{marginLeft: 2}}>
+                            Sign Out
+                        </Button>
                     </div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>

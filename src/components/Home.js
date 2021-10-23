@@ -1,14 +1,37 @@
 import React from "react";
 import Navbar from "./Navbar";
-import CryptoChartCard from "./CryptoChartCard";
+import {CryptoChartCard} from "./CryptoChartCard";
 
 function Home() {
+
+    const CryptoInfo = [
+        {
+            image: '',
+            crypto: 'Bitcoin',
+            cryptoInitial: 'BTC',
+            value: '47,202.48',
+        },{
+            image: '',
+            crypto: 'Ethereum',
+            cryptoInitial: 'ETH',
+            value: '3,383.95',
+        }
+    ];
 
     return (
         <>
             <Navbar />
-            <div className='home-content'>
-                <CryptoChartCard />
+            <h1 className='home-h1'>Currency Value Portafolio</h1>
+            <div className='home-content' >
+                {CryptoInfo.map((item, index) => {
+                    return (
+                        <CryptoChartCard
+                            image={item.image}
+                            crypto= {item.crypto + ' - ' + item.cryptoInitial}
+                            value={'$' + item.value}
+                        />
+                    );
+                })}
             </div>
         </>
     );
