@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { AccountCard } from "./AccountCard";
+import { Popup } from './Popup';
 
 export const Accounts = () => {
 
@@ -28,14 +29,39 @@ export const Accounts = () => {
         }
     ]);
 
+    const [isOpen, setIsOpen] = useState(false);
+
     function RemoveAccount(index) {
         setAccounts(Accounts.filter((_, i) => i !== index));
+    }
+
+    function AddAccount(event) {
+        event.preventDefault();
+        setAccounts([{
+            bank: event.target.bank.value,
+            headline: event.target.headline.value,
+            number: 10,
+            creationDate: "05/12/2019",
+            balance: 0,
+        }, ...Accounts]);
+        event.target.reset();
+        togglePopup();
+    }
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
     }
 
     return (
         <>
             <Navbar />
             <h1 className='accounts-h1'>User Accounts</h1>
+            <input
+                type="image"
+                src="plus.png"
+                style={{ width: "1.5%", marginTop: "10px", marginLeft: "48.75%" }}
+                onClick={togglePopup}
+            />
             <div className='home-content' >
                 {Accounts.map((account, index) => {
                     return (
@@ -52,8 +78,26 @@ export const Accounts = () => {
                         </div>
                     );
                 })}
+                {isOpen && <Popup
+                    content={<>
+                        <form onSubmit={AddAccount}>
+                            <div class="center">
+                                <h1>Add Account</h1>
+                                <div>
+                                    <input type="text" placeholder="Bank" name="bank" required />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Headline" name="headline" required />
+                                </div>
+                                <div>
+                                    <input type="submit" value="Submit" />
+                                </div>
+                            </div>
+                        </form>
+                    </>}
+                    handleClose={togglePopup}
+                />}
             </div>
         </>
     );
-
 }
