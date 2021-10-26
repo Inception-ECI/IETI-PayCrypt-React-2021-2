@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { AccountCard } from "./AccountCard";
 
 export const Accounts = () => {
 
-    const AccountsInfo = [
+    const [Accounts, setAccounts] = useState([
         {
             bank: "Bank of America",
             headline: "",
@@ -26,14 +26,18 @@ export const Accounts = () => {
             creationDate: "05/12/2019",
             balance: 300000,
         }
-    ];
+    ]);
+
+    function RemoveAccount(index) {
+        setAccounts(Accounts.filter((_, i) => i !== index));
+    }
 
     return (
         <>
             <Navbar />
             <h1 className='accounts-h1'>User Accounts</h1>
             <div className='home-content' >
-                {AccountsInfo.map((account, index) => {
+                {Accounts.map((account, index) => {
                     return (
                         <div className='accounts-card' key={index}>
                             <AccountCard
@@ -42,6 +46,8 @@ export const Accounts = () => {
                                 number={account.number}
                                 creationDate={account.creationDate}
                                 balance={account.balance}
+                                removeFunction={RemoveAccount}
+                                index={index}
                             />
                         </div>
                     );
