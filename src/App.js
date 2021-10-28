@@ -6,7 +6,7 @@ import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Password from './components/passwordrecovery/Password';
-
+import generatelink from './components/generatelink/generatelink';
 
 function App() {
   return (
@@ -21,7 +21,8 @@ function App() {
                 <Route path='/login' component={Login}/>
                 {/* */}
                 <Route path='/password' component={Password}/>
-
+                {/* */}
+                <Route path='/generate' component={generatelink}/>
                 {/* Aca va el index*/}
                 <Route path='/' />
             </Switch>
