@@ -32,6 +32,7 @@ export const Accounts = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     function RemoveAccount(index) {
+        console.log("hola")
         setAccounts(Accounts.filter((_, i) => i !== index));
     }
 

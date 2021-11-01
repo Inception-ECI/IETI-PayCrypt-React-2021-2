@@ -11,13 +11,13 @@ export const NavbarProfile = ({username, userid, profilePic}) => {
                 alt={username}
                 src={profilePic}
                 sx={{width:100, height: 100}}/>
-            {/*UserId*/}
-            <br/>
-            <span className='nav-bar-profile-text'>Id: {userid}</span>
-            <br/>
             <br/>
             {/*UserName*/}
-            <span className='nav-bar-profile-text'>Username: {username}</span>
+            <span className='nav-bar-profile-text'>{username}</span>
+            <br/>
+            <br/>
+            {/*UserId*/}
+            <span className='nav-bar-profile-text'>{userid}</span>
         </>
     );
 }
