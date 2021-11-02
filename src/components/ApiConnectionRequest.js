@@ -10,8 +10,6 @@ export class ApiConnectionRequest {
 
     static TOKEN_TYPE = 'Bearer ';
 
-    static ACCESS_CONTROL_ALLOW_ORIGIN = '*';
-
     static setCookie(cookieName, cookieValue) {
         document.cookie = cookieName + '=' + cookieValue + ";path=/";
     }

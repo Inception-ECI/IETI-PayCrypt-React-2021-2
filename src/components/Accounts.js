@@ -11,7 +11,15 @@ export const Accounts = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     function RemoveAccount(index) {
-        setAccounts(Accounts.filter((_, i) => i !== index));
+        ApiConnectionRequest.lookup(
+            "DELETE",
+            "/v1/account",
+            "",
+            (data) => {
+                loadAccountsInfo(data)
+            }
+        )
+        window.location.reload();
     }
 
     function AddAccount(event) {
