@@ -41,3 +41,4 @@ yarn.lock
 /.changelog
 .npm/
 dist
+package-lock.json
