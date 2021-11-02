@@ -1,96 +1,128 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Navbar from "./Navbar";
-import { AccountCard } from "./AccountCard";
-import { Popup } from './Popup';
+import {AccountCard} from "./AccountCard";
+import {Popup} from './Popup';
+import {ApiConnectionRequest} from "./ApiConnectionRequest";
 
 export const Accounts = () => {
 
-    const [Accounts, setAccounts] = useState([
-        {
-            bank: "Bank of America",
-            headline: "",
-            number: 123456789,
-            creationDate: "25/12/2019",
-            balance: 100000,
-        },
-        {
-            bank: "Chase",
-            headline: "",
-            number: 567891234,
-            creationDate: "13/12/2019",
-            balance: 200000,
-        },
-        {
-            bank: "Wells Fargo",
-            headline: "",
-            number: 897654321,
-            creationDate: "05/12/2019",
-            balance: 300000,
-        }
-    ]);
+    const [accounts, setAccounts] = useState([]);
 
     const [isOpen, setIsOpen] = useState(false);
 
     function RemoveAccount(index) {
-        setAccounts(Accounts.filter((_, i) => i !== index));
+        ApiConnectionRequest.lookup(
+            "DELETE",
+            "/v1/account",
+            "",
+            (data) => {
+                loadAccountsInfo(data)
+            }
+        )
+        window.location.reload();
     }
 
     function AddAccount(event) {
         event.preventDefault();
-        setAccounts([{
-            bank: event.target.bank.value,
-            headline: event.target.headline.value,
-            number: 10,
-            creationDate: "05/12/2019",
+
+        let accountDto = {
+            currencyCode: event.target.currency.value,
             balance: 0,
-        }, ...Accounts]);
+            state: "ACTIVE",
+            creationDate: Date.now(),
+        }
+        ApiConnectionRequest.lookup(
+            "POST",
+            "/v1/account",
+            accountDto,
+            (data) => {
+                loadAccountsInfo(data)
+            }
+        )
         event.target.reset();
         togglePopup();
+        window.location.reload();
     }
 
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
 
+    const getFormattedDate = (dateString) => {
+
+        let date = new Date(Date.parse(dateString));
+        try {
+            return date.toISOString().slice(0, 10);
+        } catch (e) {
+            return date;
+        }
+    }
+
+    function loadAccountsInfo(data) {
+        console.log(data.data);
+        setAccounts(data.data)
+    }
+
+    const getAccounts = () => {
+
+        ApiConnectionRequest.lookup(
+            "GET",
+            "/v1/account/all",
+            "",
+            (data) => {
+                loadAccountsInfo(data)
+            }
+        )
+    };
+
+    function loadAccountData() {
+        getAccounts();
+        return (
+            accounts.map((account, index) => {
+                    return (
+                        <div className='accounts-card' key={index}>
+                            <AccountCard
+                                bank={account.currencyCode}
+                                headline=""
+                                number={account.id}
+                                creationDate={getFormattedDate(account.creationDate)}
+                                balance={account.balance}
+                                removeFunction={RemoveAccount}
+                                index={account.id}
+                            />
+                        </div>
+                    )
+                }
+            )
+        )
+    }
+
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <h1 className='accounts-h1'>User Accounts</h1>
             <input
                 type="image"
                 src="plus.png"
-                style={{ width: "1.5%", marginTop: "10px", marginLeft: "48.75%" }}
+                style={{width: "1.5%", marginTop: "10px", marginLeft: "48.75%"}}
                 onClick={togglePopup}
+                alt={"Add"}
             />
-            <div className='home-content' >
-                {Accounts.map((account, index) => {
-                    return (
-                        <div className='accounts-card' key={index}>
-                            <AccountCard
-                                bank={account.bank}
-                                headline={account.headline}
-                                number={account.number}
-                                creationDate={account.creationDate}
-                                balance={account.balance}
-                                removeFunction={RemoveAccount}
-                                index={index}
-                            />
-                        </div>
-                    );
-                })}
+            <div className='home-content'>
+                {loadAccountData()}
                 {isOpen && <Popup
                     content={<>
                         <form onSubmit={AddAccount}>
-                            <div class="center">
+                            <div className="center">
                                 <h1>Add Account</h1>
                                 <div>
-                                    <input type="text" placeholder="Bank" name="bank" required />
+                                    <input type="text" placeholder="Currency" name="currency" required/>
                                 </div>
                                 <div>
-                                    <input type="text" placeholder="Headline" name="headline" required />
+                                    <input type="text" placeholder="Account Number" name="AccountNumber" required/>
                                 </div>
                                 <div>
-                                    <input type="submit" value="Submit" />
+                                    <input type="submit" value="Submit"/>
                                 </div>
                             </div>
                         </form>

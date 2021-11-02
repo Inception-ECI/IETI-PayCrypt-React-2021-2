@@ -6,12 +6,12 @@ function Home() {
 
     const CryptoInfo = [
         {
-            image: '',
+            image: '/static/images/bitcoin.jpeg',
             crypto: 'Bitcoin',
             cryptoInitial: 'BTC',
             value: '47,202.48',
         },{
-            image: '',
+            image: '/static/images/ethereum.jpeg',
             crypto: 'Ethereum',
             cryptoInitial: 'ETH',
             value: '3,383.95',
