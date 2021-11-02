@@ -111,9 +111,7 @@ function Navbar() {
                         <hr/>
                         <div className='nav-profile-content'>
                             <NavbarProfile
-                                username="usuario.usuario"
-                                userid="6das7dans7da89dad"
-                                profilePic="Profile Picture"
+                                userEmail="user.email@email.com"
                             />
                         </div>
                         <hr/>
