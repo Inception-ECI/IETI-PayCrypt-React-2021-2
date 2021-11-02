@@ -1,4 +1,4 @@
-#login{
+#login {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,23 +11,23 @@
     color: white;
 }
 
-#principallogin{
-    padding-bottom: 0%;
-    margin-bottom: 0%;
+#principallogin {
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
-#logoLogin{
+#logoLogin {
     height: 20%;
     width: 20%;
 }
 
-#buttonsign{
+#buttonsign {
     background-color: #0A7368;
     border: none;
     width: 100%;
 
 }
 
-#hr{
+#hr {
     color: white;
 }

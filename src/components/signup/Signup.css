@@ -1,4 +1,4 @@
-#signup{
+#signup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,19 +11,19 @@
     color: white;
 }
 
-#principalsign{
-    padding-bottom: 0%;
-    margin-bottom: 0%;
+#principalsign {
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 
-#buttonsign{
+#buttonsign {
     background-color: #0A7368;
     border: none;
 
 }
 
-#hr{
+#hr {
     color: white;
 }
 
