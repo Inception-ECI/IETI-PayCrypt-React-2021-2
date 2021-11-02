@@ -1,5 +1,4 @@
 import axios from "axios";
-import * as React from 'react';
 
 export class ApiConnectionRequest {
 
@@ -37,7 +36,7 @@ export class ApiConnectionRequest {
 
         const headers = {
             "Content-Type": this.CONTENT_TYPE,
-            "Authorization": this.TOKEN_TYPE + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTRjZjhmNTk1NTQ5YzI1MWJhODMxMjAiLCJyb2xlcyI6IlVzZXIiLCJpYXQiOjE2MzU4NzU4NzYsImV4cCI6MTYzNTg3NzY3Nn0.WPnX0Kn99jbYHj2wgXq1If43Gh6sdkjHhzjCHw1P8d0",
+            "Authorization": this.TOKEN_TYPE + this.getCookie("loginToken"),
             "Access-Control-Allow-Origin": "*",
         };
         axios({
