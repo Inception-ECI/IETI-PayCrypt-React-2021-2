@@ -66,6 +66,15 @@ function Navbar() {
         },
     ];
 
+    const delete_cookie = function (name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    };
+
+    const handleLogOut = () => {
+        delete_cookie("loginToken");
+        window.location.href = "/";
+    }
+
     return (
         <>
             <IconContext.Provider value={{color: '#ffffff'}}>
@@ -96,7 +105,7 @@ function Navbar() {
                             <MenuItem value={20}>ESP</MenuItem>
                             <MenuItem value={30}>POR</MenuItem>
                         </Select>
-                        <Button variant="contained" href="/logout" sx={{marginLeft: 2}}>
+                        <Button variant="contained" href="/logout" sx={{marginLeft: 2}} onClick={handleLogOut}>
                             Sign Out
                         </Button>
                     </div>
