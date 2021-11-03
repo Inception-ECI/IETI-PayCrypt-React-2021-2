@@ -2,10 +2,11 @@ import "../login/Login.css"
 
 import user from "../img/usuario.png"
 import {Link} from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {TextField} from "@mui/material";
+import LoginIcon from "@mui/icons-material/Login";
+import Button from "@mui/material/Button";
 
 function Password() {
-
 
     return (
         <>
@@ -14,17 +15,34 @@ function Password() {
                     <br/>
                     <h1>Password recovery</h1>
                     <br/>
+                    <br/>
                     <img id="logoLogin" src={user} alt=""/>
+                    <br/>
                     <p>To begin changing your password
                         <br/>
                         please enter your phone or e-mail
                     </p>
+                    <br/>
+                    <br/>
                     <form id="formsign">
                         <div className="mb-3">
-                            <input type="text" placeholder="E-mail" className="form-control"
-                                   id="phoneEmail"/>
+                            <TextField
+                                id="outlined-textarea"
+                                label="Email"
+                                placeholder="email"
+                                sx={{width: 220, color: 'white'}}
+                                size="small"
+                                multiline
+                            />
                         </div>
-                        <button type="submit" id="buttonsign" className="btn btn-primary">Submit</button>
+                        <br/>
+                        <br/>
+                        <Button
+                            variant="outlined"
+                            startIcon={<LoginIcon />}
+                            sx={{color: 'white', borderColor: 'white'}}>
+                            Submit
+                        </Button>
                         <br/>
                         <br/>
                         <label className="form-check-label" for="exampleCheck1">Don't have an account ?</label>

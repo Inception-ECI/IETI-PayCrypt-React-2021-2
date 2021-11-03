@@ -6,9 +6,10 @@
     margin-right: 30%;
     margin-top: 10%;
     padding-bottom: 8%;
-    background-color: #073A40;
+    background-color: rgba(238, 11, 11, 0.89);
     opacity: 60%;
     color: white;
+    border-radius: 20% 30%;
 }
 
 #principallogin {

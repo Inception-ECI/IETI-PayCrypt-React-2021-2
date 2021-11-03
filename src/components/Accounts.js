@@ -59,7 +59,6 @@ export const Accounts = () => {
     }
 
     function loadAccountsInfo(data) {
-        console.log(data.data);
         setAccounts(data.data)
     }
 
