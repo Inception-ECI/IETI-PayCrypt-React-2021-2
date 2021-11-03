@@ -1,5 +1,8 @@
 import "../signup/Signup.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import {TextField} from "@mui/material";
+import LoginIcon from "@mui/icons-material/Login";
+import Button from "@mui/material/Button";
 
 function Signup() {
 
@@ -8,37 +11,66 @@ function Signup() {
             <div id="principalsign">
                 <div id="signup">
                     <br/>
-                    <h1>Sign Up</h1>
+                    <br/>
+                    <h1>Sign Up <AssignmentIndIcon /> </h1>
                     <br/>
                     <form id="formsign">
                         <div className="mb-3">
-                            <input type="text" placeholder="First name" className="form-control" id="firstName"/>
+                            <TextField
+                                id="outlined-textarea"
+                                label="First Name"
+                                placeholder="first name"
+                                sx={{width: 220, color: 'white'}}
+                                size="small"
+                                multiline
+                            />
                         </div>
+                        <br/>
                         <div className="mb-3">
-                            <input type="text" placeholder="Last name" className="form-control" id="lastName"/>
+                            <TextField
+                                id="outlined-textarea"
+                                label="Last Name"
+                                placeholder="last name"
+                                sx={{width: 220, color: 'white'}}
+                                size="small"
+                                multiline
+                            />
                         </div>
+                        <br/>
                         <div className="mb-3">
-                            <select id="disabledSelect" className="form-select">
-                                <option>Disabled select</option>
-                                <option>Disabled select</option>
-                                <option>Disabled select</option>
-                                <option>Disabled select</option>
-                            </select>
+                            <TextField
+                                id="outlined-textarea"
+                                label="Email"
+                                placeholder="email"
+                                sx={{width: 220, color: 'white'}}
+                                size="small"
+                                multiline
+                            />
                         </div>
+                        <br/>
                         <div className="mb-3">
-                            <input type="text" placeholder="Phone number or E-mail" className="form-control"
-                                   id="phoneEmail"/>
+                            <TextField
+                                id="outlined-password-input"
+                                label="Password"
+                                type="password"
+                                placeholder="password"
+                                sx={{width: 220}}
+                                size="small"
+                            />
                         </div>
-                        <div className="mb-3">
-                            <input type="password" placeholder="Password" className="form-control"
-                                   id="exampleInputPassword1"/>
-                        </div>
+                        <br/>
                         <div className="mb-3 form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                             <label className="form-check-label" for="exampleCheck1">I accept </label>
                             <a href=""> terms and conditions and privacy policy</a>
                         </div>
-                        <button type="submit" id="buttonsign" className="btn btn-primary">Open Account</button>
+                        <br/>
+                        <Button
+                            variant="outlined"
+                            startIcon={<LoginIcon />}
+                            sx={{color: 'white', borderColor: 'white'}}>
+                            Open Account
+                        </Button>
                     </form>
                 </div>
             </div>

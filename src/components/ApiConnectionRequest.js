@@ -15,19 +15,13 @@ export class ApiConnectionRequest {
     }
 
     static getCookie(cookieName) {
-        let name = cookieName + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(";");
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === '') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length)
-            }
+        let match = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+        if (match) {
+            return(match[2]);
         }
-        return "";
+        else{
+            return "";
+        }
     }
 
     static lookup(httpMethod, endpoint, sendData, callback) {
