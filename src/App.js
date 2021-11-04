@@ -7,6 +7,7 @@ import Login from './components/login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Password from './components/passwordrecovery/Password';
 import generatelink from './components/generatelink/generatelink';
+import convert from './components/generatelink/convert';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
                 <Route path='/password' component={Password}/>
                 {/* */}
                 <Route path='/generate' component={generatelink}/>
+                {/* */}
+                <Route path='/convert' component={convert}/>
                 {/* Aca va el index*/}
                 <Route path='/' />
             </Switch>
