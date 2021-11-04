@@ -18,7 +18,7 @@ function App() {
                     <Route path='/signup' component={Signup}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/password' component={Password}/>
-                    <Route path='/'/>
+                    <Route path='/' component={Home}/>
                 </Switch>
             </Router>
         </>
