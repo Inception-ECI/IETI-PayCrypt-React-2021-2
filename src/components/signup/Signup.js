@@ -62,7 +62,7 @@ function Signup() {
                         <div className="mb-3 form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                             <label className="form-check-label" for="exampleCheck1">I accept </label>
-                            <a href=""> terms and conditions and privacy policy</a>
+                            <a href="/#"> terms and conditions and privacy policy</a>
                         </div>
                         <br/>
                         <Button
