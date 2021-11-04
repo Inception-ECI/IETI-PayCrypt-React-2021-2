@@ -1,0 +1,34 @@
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    padding-bottom: 8%;
+    background-color: rgba(238, 11, 11, 0.89);
+    opacity: 60%;
+    color: white;
+    border-radius: 20% 30%;
+}
+
+#principallogin {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#logoLogin {
+    height: 20%;
+    width: 20%;
+}
+
+#buttonsign {
+    background-color: #0A7368;
+    border: none;
+    width: 100%;
+
+}
+
+#hr {
+    color: white;
+}

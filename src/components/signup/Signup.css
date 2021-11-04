@@ -1,0 +1,32 @@
+#signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    padding-bottom: 5%;
+    background-color: rgba(238, 11, 11, 0.89);
+    opacity: 60%;
+    color: white;
+    border-radius: 20% 30%;
+}
+
+#principalsign {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+
+#buttonsign {
+    background-color: #0A7368;
+    border: none;
+
+}
+
+#hr {
+    color: white;
+}
+
+
+
