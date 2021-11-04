@@ -6,6 +6,8 @@ import {Accounts} from "./components/Accounts";
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
 import Password from './components/passwordrecovery/Password';
+import Generate from './components/generatelink/Generate';
+import Convert from './components/generatelink/Convert';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
                     <Route path='/signup' component={Signup}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/password' component={Password}/>
+                    <Route path='/generate' component={Generate}/>
+                    <Route path='/convert' component={Convert}/>
                     <Route path='/' component={Home}/>
                 </Switch>
             </Router>
