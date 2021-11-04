@@ -4,9 +4,9 @@ export class ApiConnectionRequest {
 
     static CONTENT_TYPE = 'application/json';
 
-    static HOST = 'localhost:8090';
+    static HOST = 'paycrypt.herokuapp.com';
 
-    static PROTOCOL = 'http://';
+    static PROTOCOL = 'https://';
 
     static TOKEN_TYPE = 'Bearer ';
 
