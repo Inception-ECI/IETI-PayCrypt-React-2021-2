@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import {CryptoChartCard} from "./CryptoChartCard";
-import {ApiCriptoRequest} from "./ApiCriptoRequest";
 
 function Home() {
 
