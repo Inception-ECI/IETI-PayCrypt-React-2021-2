@@ -8,6 +8,8 @@ import Login from './components/login/Login';
 import Password from './components/passwordrecovery/Password';
 import {PrivateRoute} from "./components/PrivateRoute";
 import {ApiConnectionRequest} from "./components/ApiConnectionRequest";
+import {Transactions} from "./components/Transactions";
+import {Order} from "./components/Order";
 
 function App() {
     return (
@@ -23,6 +25,16 @@ function App() {
                         path="/accounts"
                         loggedIn={ApiConnectionRequest.getCookie("loginToken").length > 0}
                         component={Accounts}
+                    />
+                    <PrivateRoute
+                        path="/transactions"
+                        loggedIn={ApiConnectionRequest.getCookie("loginToken").length > 0}
+                        component={Transactions}
+                    />
+                    <PrivateRoute
+                        path="/order"
+                        loggedIn={ApiConnectionRequest.getCookie("loginToken").length > 0}
+                        component={Order}
                     />
                     <Route path='/signup' component={Signup}/>
                     <Route path='/login' component={Login}/>

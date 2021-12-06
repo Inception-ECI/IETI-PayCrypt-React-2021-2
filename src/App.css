@@ -28,6 +28,13 @@
   padding-bottom: 2em;
 }
 
+.home-content-home {
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2em;
+  margin-left: 17%;
+}
+
 /* Popup style */
 .popup-box {
   position: fixed;
@@ -45,6 +52,7 @@
   justify-content: center;
   text-align: center;
 }
+
 .popup-box input {
   margin-top: 10px;
   padding: 2px;
