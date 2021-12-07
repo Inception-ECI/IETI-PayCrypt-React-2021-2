@@ -32,7 +32,7 @@ export const Order = () => {
     function loadOrderData() {
         getOrder();
         return (
-            <Card sx={{maxWidth: 600, marginLeft: "40%"}}>
+            <Card sx={{maxWidth: 600, marginLeft: "40%", backgroundColor: "rgba(18,30,149,0.1)", borderRadius: 5}}>
                 <CardHeader
                     title={"OrderId: " + order.id}
                     subheader={"CreationDate: " + order.creationDate}

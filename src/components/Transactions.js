@@ -31,7 +31,7 @@ export const Transactions = () => {
     function loadTransactionsData() {
         getTransactions();
         return (
-            <TableContainer component={Paper} sx={{minWidth: 30, maxWidth: 1900, marginLeft: "13%"}}>
+            <TableContainer component={Paper} sx={{minWidth: 30, maxWidth: 1900, marginLeft: "13%", backgroundColor: "rgba(18,30,149,0.1)", borderRadius: 5}}>
                 <Table aria-label="Transaction Report">
                     <TableHead>
                         <TableRow>
