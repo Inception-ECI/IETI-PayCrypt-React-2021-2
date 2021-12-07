@@ -10,6 +10,7 @@ import {PrivateRoute} from "./components/PrivateRoute";
 import {ApiConnectionRequest} from "./components/ApiConnectionRequest";
 import {Transactions} from "./components/Transactions";
 import {Order} from "./components/Order";
+import {CreatePaymentLink} from "./components/CreatePaymentLink";
 
 function App() {
     return (
@@ -39,6 +40,7 @@ function App() {
                     <Route path='/signup' component={Signup}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/password' component={Password}/>
+                    <Route path='/generate-payment-link' component={CreatePaymentLink}/>
                     <Route path='/' component={Login}/>
                 </Switch>
             </Router>

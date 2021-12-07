@@ -87,7 +87,7 @@ function Navbar() {
                             placeholder="Search resources..."
                             value="Doe"
                             data={data}
-                        />
+                            onChange={""} onSelect={""}/>
                     </div>
                     <div className='nav-idiom-changer'>
                         <Select

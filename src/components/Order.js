@@ -4,12 +4,8 @@ import {ApiConnectionRequest} from "./ApiConnectionRequest";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-import Avatar from "@mui/material/Avatar";
-import {CardActions, CardHeader, Collapse, IconButton} from "@mui/material";
-import CardMedia from "@mui/material/CardMedia";
+import {CardHeader} from "@mui/material";
 import Card from "@mui/material/Card";
-import {ExpandMore} from "@mui/icons-material";
-import {red} from "@mui/material/colors";
 
 export const Order = () => {
 
@@ -35,8 +31,8 @@ export const Order = () => {
 
     function loadOrderData() {
         getOrder();
-        return(
-            <Card sx={{ maxWidth: 600, marginLeft: "40%"}}>
+        return (
+            <Card sx={{maxWidth: 600, marginLeft: "40%"}}>
                 <CardHeader
                     title={"OrderId: " + order.id}
                     subheader={"CreationDate: " + order.creationDate}
@@ -47,11 +43,11 @@ export const Order = () => {
                     </Typography>
                     <br/>
                     <Typography variant="body1" color="text.secondary">
-                        {order.sourceCurrencyCode}:  {order.sourceValue}
+                        {order.sourceCurrencyCode}: {order.sourceValue}
                     </Typography>
                     <DoubleArrowIcon/>
                     <Typography variant="body1" color="text.secondary">
-                        {order.targetCurrencyCode}:  {order.targetValue}
+                        {order.targetCurrencyCode}: {order.targetValue}
                     </Typography>
                 </CardContent>
             </Card>
