@@ -11,13 +11,18 @@ export const Transactions = () => {
         setTransactions(data.data)
     }
 
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
     const getTransactions = () => {
 
         ApiConnectionRequest.lookup(
             "GET",
             "/v1/transaction/all",
             "",
-            (data) => {
+            async (data) => {
+                await sleep(2000);
                 loadTransactionsInfo(data)
             }
         )

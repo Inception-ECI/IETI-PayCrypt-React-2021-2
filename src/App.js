@@ -11,6 +11,7 @@ import {ApiConnectionRequest} from "./components/ApiConnectionRequest";
 import {Transactions} from "./components/Transactions";
 import {Order} from "./components/Order";
 import {CreatePaymentLink} from "./components/CreatePaymentLink";
+import {PaymentLink} from "./components/PaymentLink";
 
 function App() {
     return (
@@ -37,10 +38,15 @@ function App() {
                         loggedIn={ApiConnectionRequest.getCookie("loginToken").length > 0}
                         component={Order}
                     />
+                    <PrivateRoute
+                        path="/generate-payment-link"
+                        loggedIn={ApiConnectionRequest.getCookie("loginToken").length > 0}
+                        component={CreatePaymentLink}
+                    />
                     <Route path='/signup' component={Signup}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/password' component={Password}/>
-                    <Route path='/generate-payment-link' component={CreatePaymentLink}/>
+                    <Route path='/payment-link/**' component={PaymentLink}/>
                     <Route path='/' component={Login}/>
                 </Switch>
             </Router>

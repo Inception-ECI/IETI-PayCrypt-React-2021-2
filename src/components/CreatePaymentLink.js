@@ -7,8 +7,11 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import MenuItem from "@mui/material/MenuItem";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import {ApiConnectionRequest} from "./ApiConnectionRequest";
 
+toast.configure()
 export const CreatePaymentLink = () => {
 
     const [accountId, setAccountId] = useState("");
@@ -23,10 +26,12 @@ export const CreatePaymentLink = () => {
         let paymentLinkBuilder = "";
 
         paymentLinkBuilder += ApiConnectionRequest.PROTOCOL;
-        paymentLinkBuilder += ApiConnectionRequest.HOST
-        paymentLinkBuilder += "/order/" + orderId
+        paymentLinkBuilder += ApiConnectionRequest.REACT_HOST
+        paymentLinkBuilder += "/payment-link/" + orderId
 
         setPaymentLink(paymentLinkBuilder);
+        navigator.clipboard.writeText(paymentLinkBuilder)
+        toast.info("Payment Link Copy to clipboard", {position: toast.POSITION.TOP_CENTER})
     }
 
     function handleGenerateLinkButton() {
@@ -58,13 +63,18 @@ export const CreatePaymentLink = () => {
         setAccounts(data.data)
     }
 
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
     const getAccounts = () => {
 
         ApiConnectionRequest.lookup(
             "GET",
             "/v1/account/all",
             "",
-            (data) => {
+            async (data) => {
+                await sleep(2000);
                 loadAccountsInfo(data)
             }
         )

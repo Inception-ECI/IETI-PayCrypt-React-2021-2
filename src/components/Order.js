@@ -15,6 +15,10 @@ export const Order = () => {
         setOrder(data.data);
     }
 
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
     const getOrder = () => {
 
         let orderId = ApiConnectionRequest.getCookie("py-ord");
@@ -23,7 +27,8 @@ export const Order = () => {
             "GET",
             "/v1/order/" + orderId,
             "",
-            (data) => {
+            async (data) => {
+                await sleep(2000);
                 loadOrderInfo(data)
             }
         )
