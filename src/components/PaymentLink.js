@@ -7,7 +7,10 @@ import CardContent from "@mui/material/CardContent";
 import MenuItem from "@mui/material/MenuItem";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import Button from "@mui/material/Button";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure()
 export const PaymentLink = () => {
 
     const AvailableCurrencies = [
@@ -81,6 +84,54 @@ export const PaymentLink = () => {
             }
         )
     };
+
+    const updateOrderInfo = () => {
+
+        let orderId = ApiConnectionRequest.getCookie("py-ord");
+
+        console.log(orderId);
+
+        let orderDto = {
+            id: orderId,
+            sourceCurrencyCode: currencyId
+        };
+
+        ApiConnectionRequest.lookup(
+            "POST",
+            "/v1/payment/update-source",
+            orderDto,
+            async (data) => {
+                await sleep(2000);
+                pay()
+            }
+        )
+    }
+
+    function pay() {
+
+        toast.success("1", {position: toast.POSITION.TOP_CENTER})
+
+        let orderId = ApiConnectionRequest.getCookie("py-ord");
+
+        let orderDto = {
+            paymentToken: orderId
+        };
+
+        ApiConnectionRequest.lookup(
+            "POST",
+            "/v1/payment/pay",
+            orderDto,
+            async (data) => {
+                await sleep(2000);
+                toast.success("Payment Generation Successful", {position: toast.POSITION.TOP_CENTER})
+            }
+        )
+    }
+
+    function handlePay() {
+        toast.info("Generating Payment", {position: toast.POSITION.TOP_CENTER})
+        updateOrderInfo();
+    }
 
     const cardSx = {
         maxWidth: 1600, borderRadius: 5, marginLeft: 55, marginTop: 5, backgroundColor: "rgba(18,30,149,0.1)"
@@ -168,6 +219,7 @@ export const PaymentLink = () => {
                                     id="demo-simple-select"
                                     label="Source Currency"
                                     variant={"filled"}
+                                    defaultValue={AvailableDocumentType[1].id}
                                 >
                                     {AvailableDocumentType.map((docType, index) => {
                                         return (
@@ -222,6 +274,7 @@ export const PaymentLink = () => {
                             <Button
                                 startIcon={<AttachMoneyIcon/>}
                                 sx={{backgroundColor: "rgb(12,76,38)", color: "white", borderRadius: 3}}
+                                onClick={handlePay}
                             >
                                 Pay
                             </Button>

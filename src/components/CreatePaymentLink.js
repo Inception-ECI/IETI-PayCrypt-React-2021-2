@@ -31,12 +31,10 @@ export const CreatePaymentLink = () => {
 
         setPaymentLink(paymentLinkBuilder);
         navigator.clipboard.writeText(paymentLinkBuilder)
-        toast.info("Payment Link Copy to clipboard", {position: toast.POSITION.TOP_CENTER})
+        toast.info("Payment Link Copied to clipboard", {position: toast.POSITION.TOP_CENTER})
     }
 
     function handleGenerateLinkButton() {
-        console.log(accountId)
-        console.log(amount)
         let orderDto = {
             targetAccount: accountId,
             targetValue: amount

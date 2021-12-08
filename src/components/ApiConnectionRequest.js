@@ -4,11 +4,11 @@ export class ApiConnectionRequest {
 
     static CONTENT_TYPE = 'application/json';
 
-    static HOST = 'localhost:8080';
+    static HOST = 'paycrypt.herokuapp.com';
 
     static REACT_HOST = 'localhost:3000';
 
-    static PROTOCOL = 'http://';
+    static PROTOCOL = 'https://';
 
     static TOKEN_TYPE = 'Bearer ';
 
