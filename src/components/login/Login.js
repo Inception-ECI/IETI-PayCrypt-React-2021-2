@@ -34,8 +34,8 @@ function Login() {
     const handleLogin = (event) => {
         event.preventDefault();
         let loginDto = {
-            email: email,
-            password: password
+            email: "user.email@email.com",
+            password: "lacontraseña"
         }
         ApiConnectionRequest.setCookie("ac-py", "1")
         ApiConnectionRequest.lookup(

@@ -12,6 +12,7 @@ import {Transactions} from "./components/Transactions";
 import {Order} from "./components/Order";
 import {CreatePaymentLink} from "./components/CreatePaymentLink";
 import {PaymentLink} from "./components/PaymentLink";
+import {AfterPayment} from "./components/AfterPayment";
 
 function App() {
     return (
@@ -47,6 +48,7 @@ function App() {
                     <Route path='/login' component={Login}/>
                     <Route path='/password' component={Password}/>
                     <Route path='/payment-link/**' component={PaymentLink}/>
+                    <Route path='/payment-completed/**' component={AfterPayment}/>
                     <Route path='/' component={Login}/>
                 </Switch>
             </Router>
