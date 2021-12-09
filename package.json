@@ -25,8 +25,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "npm start",
-    "build": "npm install && npm build",
+    "start": "set PORT=$PORT && npm start",
+    "build": "cd client/ && npm install && npm build",
     "heroku-postbuild": "npm install",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
