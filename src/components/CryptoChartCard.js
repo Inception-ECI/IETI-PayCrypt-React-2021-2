@@ -8,7 +8,7 @@ import {CardActionArea} from '@mui/material';
 
 export const CryptoChartCard = ({image, crypto, value}) => {
     return (
-        <Card sx={{ maxWidth: 1000, marginLeft: 40, marginTop: 5}}>
+        <Card sx={{ maxWidth: 1000, marginLeft: 40, marginTop: 5, backgroundColor: "rgba(18,30,149,0.1)", borderRadius: 5}}>
             <CardActionArea>
                 <CardMedia
                     component="img"

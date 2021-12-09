@@ -30,7 +30,7 @@ export const NavbarProfile = ({userEmail}) => {
             <Avatar
                 className='nav-bar-profile'
                 alt={username}
-                src={profilePic}
+                src={"/static/images/profilePic.png"}
                 sx={{width: 100, height: 100}}/>
         );
     };

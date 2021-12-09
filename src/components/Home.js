@@ -4,7 +4,6 @@ import {CryptoChartCard} from "./CryptoChartCard";
 
 function Home() {
 
-
     const CryptoInfo = [
         {
             image: '/static/images/bitcoin.jpeg',
@@ -48,13 +47,12 @@ function Home() {
             value: '52.43',
         }
     ];
-    
 
     return (
         <>
             <Navbar />
-            <h1 className='home-h1'>Currency Value Portafolio</h1>
-            <div className='home-content' >
+            <h1 className='center'>Currency Value Portfolio</h1>
+            <div className='home-content-home'>
                 {CryptoInfo.map((item, index) => {
                     return (
                         <CryptoChartCard

@@ -58,6 +58,10 @@ export const Accounts = () => {
         }
     }
 
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
     function loadAccountsInfo(data) {
         setAccounts(data.data)
     }
@@ -68,7 +72,8 @@ export const Accounts = () => {
             "GET",
             "/v1/account/all",
             "",
-            (data) => {
+            async (data) => {
+                await sleep(2000);
                 loadAccountsInfo(data)
             }
         )
