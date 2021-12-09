@@ -52,8 +52,6 @@ export const PaymentLink = () => {
             sourceValue: order.targetValue
         };
 
-        console.log(conversionDto)
-
         ApiConnectionRequest.lookup(
             "POST",
             "/v1/conversion",

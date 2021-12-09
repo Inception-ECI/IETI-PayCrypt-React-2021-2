@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import {InputLabel, Select, Stack, TextField} from "@mui/material";
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import MenuItem from "@mui/material/MenuItem";
@@ -16,7 +17,11 @@ export const CreatePaymentLink = () => {
 
     const [accountId, setAccountId] = useState("");
 
-    const [amount, setAmount] = useState("");
+    const [accountType, setAccountType] = useState("");
+
+    const [amount, setAmount] = useState("0");
+
+    const [amountUsd, setAmountUsd] = useState("0");
 
     const [paymentLink, setPaymentLink] = useState("No Payment Link Generated");
 
@@ -30,11 +35,17 @@ export const CreatePaymentLink = () => {
         paymentLinkBuilder += "/payment-link/" + orderId
 
         setPaymentLink(paymentLinkBuilder);
-        navigator.clipboard.writeText(paymentLinkBuilder)
+        toast.success("Payment Link Generated! ", {position: toast.POSITION.TOP_CENTER})
+    }
+
+    function copyToClipboard() {
+
+        navigator.clipboard.writeText(paymentLink)
         toast.info("Payment Link Copied to clipboard", {position: toast.POSITION.TOP_CENTER})
     }
 
     function handleGenerateLinkButton() {
+        toast.info("Generating Payment Link", {position: toast.POSITION.TOP_CENTER})
         let orderDto = {
             targetAccount: accountId,
             targetValue: amount
@@ -51,10 +62,37 @@ export const CreatePaymentLink = () => {
 
     function handleAccountSelect(event) {
         setAccountId(event.target.value)
+
+        for (let account of accounts) {
+            if (account.id === event.target.value) {
+                setAccountType(account.currencyCode);
+                break;
+            }
+        }
+    }
+
+    function handleCurrencySelect() {
+
+        let conversionDto = {
+            sourceCurrency: "USD",
+            targetCurrency: accountType,
+            sourceValue: amountUsd + "0"
+        };
+
+        ApiConnectionRequest.lookup(
+            "POST",
+            "/v1/conversion",
+            conversionDto,
+            async (data) => {
+                await sleep(2000);
+                setAmount(data.data.value)
+            }
+        )
     }
 
     function handleAmountSelect(event) {
-        setAmount(event.target.value)
+        setAmountUsd(event.target.value)
+        handleCurrencySelect();
     }
 
     function loadAccountsInfo(data) {
@@ -125,18 +163,33 @@ export const CreatePaymentLink = () => {
                         </Stack>
                         <br/>
                         <br/>
-                        <Stack spacing={2}>
-                            <Typography variant="h5" component="div">
-                                Total:
-                            </Typography>
-                            <br/>
-                            <TextField id="TotalAmount"
-                                       type="number"
-                                       label="Amount"
-                                       variant="outlined"
-                                       onChange={handleAmountSelect}
-                                       sx={{backgroundColor: "rgba(255,255,255,0.3)"}}
-                            />
+                        <Stack direction="row" spacing={10}>
+                            <Stack spacing={2} sx={{minWidth: 300}}>
+                                <Typography variant="h5" component="div">
+                                    Total ( {accountType} ):
+                                </Typography>
+                                <TextField id="TotalAmount"
+                                           disabled={true}
+                                           type="number"
+                                           label="Amount"
+                                           variant="outlined"
+                                           value={amount}
+                                           onChange={handleAmountSelect}
+                                           sx={{backgroundColor: "rgba(255,255,255,0.3)"}}
+                                />
+                            </Stack>
+                            <Stack spacing={2} sx={{minWidth: 300}}>
+                                <Typography variant="h5" component="div">
+                                    Total ( USD ):
+                                </Typography>
+                                <TextField id="TotalAmount"
+                                           type="number"
+                                           label="Amount"
+                                           variant="outlined"
+                                           onChange={handleAmountSelect}
+                                           sx={{backgroundColor: "rgba(255,255,255,0.3)"}}
+                                />
+                            </Stack>
                         </Stack>
                         <br/>
                         <br/>
@@ -148,13 +201,23 @@ export const CreatePaymentLink = () => {
                             >
                                 Generate Payment Link
                             </Button>
-                            <TextField
-                                disabled
-                                id="outlined-disabled"
-                                label="Payment Link"
-                                defaultValue={paymentLink}
-                                value={paymentLink}
-                            />
+                            <Stack direction="row" spacing={1}>
+                                <TextField
+                                    disabled
+                                    id="outlined-read-only-input"
+                                    label="Payment Link"
+                                    defaultValue={paymentLink}
+                                    value={paymentLink}
+                                    sx={{minWidth: 650, backgroundColor: "rgba(255,255,255,0.4)"}}
+                                />
+                                <Button
+                                    startIcon={<ContentPasteIcon/>}
+                                    sx={{backgroundColor: "rgb(185,169,231)", color: "white", borderRadius: 3, minWidth: 210}}
+                                    onClick={copyToClipboard}
+                                >
+                                    Copy Payment Link
+                                </Button>
+                            </Stack>
                         </Stack>
                     </CardContent>
                 </Card>
