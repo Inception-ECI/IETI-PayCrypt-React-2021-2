@@ -15,6 +15,9 @@ export const PaymentLink = () => {
 
     const AvailableCurrencies = [
         {
+            id: "SELECT",
+        },
+        {
             id: "COP",
         }, {
             id: "USD",
@@ -180,7 +183,7 @@ export const PaymentLink = () => {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     label="Source Currency"
-                                    defaultValue={AvailableCurrencies[1].id}
+                                    defaultValue={AvailableCurrencies[0].id}
                                     onChange={handleCurrencySelect}
                                 >
                                     {AvailableCurrencies.map((currency, index) => {
