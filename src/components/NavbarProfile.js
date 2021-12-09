@@ -10,7 +10,7 @@ export const NavbarProfile = ({userEmail}) => {
 
     function loadProfileInfo(data) {
         let user = data.data;
-        setUsername(user.name)
+        setUsername(user.name + " " + user.lastName)
         setUserid(user.id)
         setProfilePic(user.id)
     }
