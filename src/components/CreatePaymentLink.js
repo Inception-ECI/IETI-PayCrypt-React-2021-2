@@ -25,7 +25,7 @@ export const CreatePaymentLink = () => {
     function loadPaymentLink(orderId) {
         let paymentLinkBuilder = "";
 
-        paymentLinkBuilder += ApiConnectionRequest.PROTOCOL;
+        paymentLinkBuilder += ApiConnectionRequest.REACT_PROTOCOL;
         paymentLinkBuilder += ApiConnectionRequest.REACT_HOST
         paymentLinkBuilder += "/payment-link/" + orderId
 

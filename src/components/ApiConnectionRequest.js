@@ -8,6 +8,8 @@ export class ApiConnectionRequest {
 
     static REACT_HOST = 'localhost:3000';
 
+    static REACT_PROTOCOL = 'http://';
+
     static PROTOCOL = 'https://';
 
     static TOKEN_TYPE = 'Bearer ';

@@ -111,9 +111,6 @@ export const PaymentLink = () => {
     }
 
     function pay() {
-
-        toast.success("1", {position: toast.POSITION.TOP_CENTER})
-
         let orderId = ApiConnectionRequest.getCookie("py-ord");
 
         let orderDto = {
