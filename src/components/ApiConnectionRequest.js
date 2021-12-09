@@ -6,7 +6,7 @@ export class ApiConnectionRequest {
 
     static HOST = 'paycrypt.herokuapp.com';
 
-    static REACT_HOST = 'paycrypt-react.herokuapp.com';
+    static REACT_HOST = 'localhost:3000';
 
     static PROTOCOL = 'https://';
 
