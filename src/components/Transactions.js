@@ -11,13 +11,18 @@ export const Transactions = () => {
         setTransactions(data.data)
     }
 
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
     const getTransactions = () => {
 
         ApiConnectionRequest.lookup(
             "GET",
             "/v1/transaction/all",
             "",
-            (data) => {
+            async (data) => {
+                await sleep(2000);
                 loadTransactionsInfo(data)
             }
         )
@@ -31,7 +36,7 @@ export const Transactions = () => {
     function loadTransactionsData() {
         getTransactions();
         return (
-            <TableContainer component={Paper} sx={{minWidth: 30, maxWidth: 1900, marginLeft: "13%"}}>
+            <TableContainer component={Paper} sx={{minWidth: 30, maxWidth: 1900, marginLeft: "13%", backgroundColor: "rgba(18,30,149,0.1)", borderRadius: 5}}>
                 <Table aria-label="Transaction Report">
                     <TableHead>
                         <TableRow>

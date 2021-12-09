@@ -7,7 +7,7 @@ import { Grid } from '@mui/material';
 
 export const AccountCard = ({ bank, headline, number, creationDate, balance, removeFunction, index }) => {
     return (
-        <Card sx={{ maxWidth: 1000, margin: 'auto', marginTop: 5 }}>
+        <Card sx={{ maxWidth: 1000, margin: 'auto', marginTop: 5, backgroundColor: "rgba(18,30,149,0.1)", borderRadius: 5}}>
             <CardContent>
                 <Grid container spacing={2}>
                     <Grid item xs={11}>

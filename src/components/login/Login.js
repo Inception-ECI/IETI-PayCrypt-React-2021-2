@@ -8,7 +8,10 @@ import './Login.css';
 import {TextField} from "@mui/material";
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure()
 function Login() {
 
     const [email, setEmail] = useState("");
@@ -24,7 +27,6 @@ function Login() {
     }
 
     const handleAfterLogin = (data) => {
-        console.log(data);
         ApiConnectionRequest.setCookie("loginToken", data.token);
         window.location.href = "/home";
     }
@@ -32,9 +34,10 @@ function Login() {
     const handleLogin = (event) => {
         event.preventDefault();
         let loginDto = {
-            email: "user.email@email.com",
-            password: "lacontraseña"
+            email: email,
+            password: password
         }
+        ApiConnectionRequest.setCookie("ac-py", "1")
         ApiConnectionRequest.lookup(
             "POST",
             "/v1/auth",
