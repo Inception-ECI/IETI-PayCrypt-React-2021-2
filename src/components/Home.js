@@ -1,69 +1,57 @@
 import React from "react";
 import Navbar from "./Navbar";
 import {CryptoChartCard} from "./CryptoChartCard";
+import{TableContainer, Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core';
+
+
+const data = [
+    {NameCryto:'Bitcoin', cryptoInitial: 'BTC', image: '/static/images/bitcoin.jpeg', value:'62902.24'},
+    {NameCryto:'Ethereum', cryptoInitial: 'ETH', image: '/static/images/ethereum.jpeg', value:'4602.18'},
+    {NameCryto:'Binance Coin', cryptoInitial: 'BNB', image: '/static/images/BNB.png', value:'562.1'},
+    {NameCryto:'Solan', cryptoInitial: 'SOL', image: '/static/images/solana.png', value:'207.23'},
+    {NameCryto:'Tether', cryptoInitial: 'USDT', image: '/static/images/tether.png', value:'0.997687'},
+    {NameCryto:'Cardano', cryptoInitial: 'ADA', image: '/static/images/cardano.jpg', value:'2.12'},
+    {NameCryto:'XRP', cryptoInitial: 'XRP', image: '/static/images/xrp.png', value:'1,21278'},
+    {NameCryto:'Polkadot', cryptoInitial: 'XDOT', image: '/static/images/polkadot.jpg', value:'52.43'}
+];
+    
+
+
 
 function Home() {
 
-    const CryptoInfo = [
-        {
-            image: '/static/images/bitcoin.jpeg',
-            crypto: 'Bitcoin',
-            cryptoInitial: 'BTC',
-            value:'62902.24',
-        },{
-            image: '/static/images/ethereum.jpeg',
-            crypto: 'Ethereum',
-            cryptoInitial: 'ETH',
-            value: '4602.18',
-        },{
-            image: '/static/images/BNB.png',
-            crypto: 'Binance Coin',
-            cryptoInitial: 'BNB',
-            value: '562.1',
-        },{
-            image: '/static/images/solana.png',
-            crypto: 'Solana',
-            cryptoInitial: 'SOL',
-            value: '207.23',
-        },{
-            image: '/static/images/tether.png',
-            crypto: 'Tether',
-            cryptoInitial: 'USDT',
-            value: '0.997687',
-        },{
-            image: '/static/images/cardano.jpg',
-            crypto: 'Cardano',
-            cryptoInitial: 'ADA',
-            value: '2.12',
-        },{
-            image: '/static/images/xrp.png',
-            crypto: 'XRP',
-            cryptoInitial: 'XRP',
-            value: '1,21278	',
-        },{
-            image: '/static/images/polkadot.jpg',
-            crypto: 'Polkadot',
-            cryptoInitial: 'DOT',
-            value: '52.43',
-        }
-    ];
-
-    return (
-        <>
+    return(
+        <> 
             <Navbar />
             <h1 className='center'>Currency Value Portfolio</h1>
-            <div className='home-content-home'>
-                {CryptoInfo.map((item, index) => {
-                    return (
-                        <CryptoChartCard
-                            image={item.image}
-                            crypto= {item.crypto + ' - ' + item.cryptoInitial}
-                            value={'$' + item.value}
-                        />
-                    );
-                })}
+            <div className ='home'>
+                <TableContainer>
+                    <Table className="table table-hover">
+                        <TableHead>
+                        <TableRow className="table-active">
+                            <TableCell>NameCryto</TableCell>
+                            <TableCell>CryptoInitial</TableCell>
+                            <TableCell>Image</TableCell>
+                            <TableCell>Value</TableCell>
+                        </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.map(celda=>(
+                                <TableRow>
+                                    <TableCell>{celda.NameCryto}</TableCell>
+                                    <TableCell>{celda.cryptoInitial}</TableCell>
+                                    <TableCell>{celda.image}</TableCell>
+                                    <TableCell >{celda.value}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+        
             </div>
+        
         </>
+         
     );
 
 }
