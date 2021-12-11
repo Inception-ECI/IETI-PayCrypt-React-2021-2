@@ -106,7 +106,7 @@ export const CreatePaymentLink = () => {
                     maxWidth: 900,
                     backgroundColor: "rgba(18,30,149,0.1)",
                     borderRadius: 5,
-                    marginLeft: 108,
+                    marginLeft: 80,
                 }}>
                     <CardContent>
                         <Stack spacing={2}>
