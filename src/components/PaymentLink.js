@@ -40,9 +40,13 @@ export const PaymentLink = () => {
 
     const [order, setOrder] = useState("");
 
+    const [user, setUser] = useState("");
+
     const [currencyId, setCurrencyId] = useState("");
 
     const [orderValue, setOrderValue] = useState("0");
+
+    const [redirectionLink, setRedirectionLink] = useState("No Payment Link Generated");
 
     function handleCurrencySelect(event) {
 
@@ -51,8 +55,6 @@ export const PaymentLink = () => {
             targetCurrency: event.target.value,
             sourceValue: order.targetValue
         };
-
-        console.log(conversionDto)
 
         ApiConnectionRequest.lookup(
             "POST",
@@ -84,6 +86,19 @@ export const PaymentLink = () => {
             async (data) => {
                 await sleep(2000);
                 loadOrderInfo(data)
+                getUser()
+            }
+        )
+    };
+
+    const getUser = () => {
+
+        ApiConnectionRequest.lookup(
+            "GET",
+            "/v1/order/user/" + order.targetAccount,
+            "",
+            (data) => {
+                setUser(data.data.name + " " + data.data.lastName)
             }
         )
     };
@@ -124,6 +139,8 @@ export const PaymentLink = () => {
             async (data) => {
                 await sleep(2000);
                 toast.success("Payment Generation Successful", {position: toast.POSITION.TOP_CENTER})
+                await sleep(2000);
+                window.location.href = ApiConnectionRequest.REACT_PROTOCOL + ApiConnectionRequest.REACT_HOST + "/payment-completed/" + order.id;
             }
         )
     }
@@ -147,13 +164,19 @@ export const PaymentLink = () => {
 
         return (
             <div>
+                <CardMedia
+                    component="img"
+                    height="100"
+                    image="/static/images/Paycrypt2.png"
+                    alt="Paycrypt"
+                />
                 <Card sx={cardSx}>
                     <CardHeader
-                        title="Payment Details"
+                        title={"Charge Details" + "   -   " + "Pay To:" + " " + user}
                     />
                     <CardMedia
                         component="img"
-                        height="194"
+                        height="150"
                         image="/static/images/PaymentImg.png"
                         alt="Paella dish"
                     />
@@ -203,11 +226,11 @@ export const PaymentLink = () => {
 
                 <Card sx={cardSx}>
                     <CardHeader
-                        title="Payment Method"
+                        title="Payment Details"
                     />
                     <CardMedia
                         component="img"
-                        height="194"
+                        height="150"
                         image="/static/images/finalPayment.jpg"
                         alt="Paella dish"
                     />
