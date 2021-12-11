@@ -27,11 +27,12 @@ function Home() {
             </div>
             <div className ='table-responsive'>
 
-                <TableContainer>
+                <TableContainer sx={{marginLeft: 34, maxWidth: 1600}}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                         <TableRow className="table-active">
-                            <TableCell className="inherit"></TableCell>
+                            <TableCell className="inherit">
+                            </TableCell>
                             <TableCell className="inherit">
                             <h1 className='left'>NameCryto </h1>
                             </TableCell>
