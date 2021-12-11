@@ -17,31 +17,49 @@ const data = [
     
 
 
-
 function Home() {
 
     return(
         <> 
             <Navbar />
-            <h1 className='center'>Currency Value Portfolio</h1>
-            <div className ='home'>
+            <div>
+                <h1 className='center'>Currency Value Portfolio</h1>
+            </div>
+            <div className ='table-responsive'>
+
                 <TableContainer>
-                    <Table className="table table-hover">
+                    <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                         <TableRow className="table-active">
-                            <TableCell>NameCryto</TableCell>
-                            <TableCell>CryptoInitial</TableCell>
-                            <TableCell>Image</TableCell>
-                            <TableCell>Value</TableCell>
+                            <TableCell className="inherit"></TableCell>
+                            <TableCell className="inherit">
+                            <h1 className='left'>NameCryto </h1>
+                            </TableCell>
+                            <TableCell >
+                            <h1 className='left'>CryptoInitial</h1>    
+                            </TableCell>
+                            <TableCell>
+                            <h1 className='left'> Value </h1>
+                            </TableCell>
                         </TableRow>
                         </TableHead>
                         <TableBody>
                             {data.map(celda=>(
                                 <TableRow>
-                                    <TableCell>{celda.NameCryto}</TableCell>
-                                    <TableCell>{celda.cryptoInitial}</TableCell>
-                                    <TableCell>{celda.image}</TableCell>
-                                    <TableCell >{celda.value}</TableCell>
+                                    <TableCell>
+                                        <CryptoChartCard
+                                            image={celda.image} 
+                                        />
+                                    </TableCell>
+                                    <TableCell >
+                                    <h2 className='left'>{celda.NameCryto}</h2>
+                                    </TableCell>
+                                    <TableCell >
+                                    <h2 className='left'>{celda.cryptoInitial}</h2>
+                                    </TableCell>
+                                    <TableCell >
+                                    <h2 className='left'>{celda.value}</h2>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
